@@ -1,0 +1,147 @@
+<!-- ОБЩИЙ ШАБЛОН С ВЫБОРОМ ПОДРАЗДЕЛЕНИЙ -->
+
+<!doctype html>
+<html lang="ru-ru">
+{% load static %}
+<head>
+    {% include '_css.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Рецепты</title>
+</head>
+
+<body>
+<header style="height:70px" class="bg-light-subtle">
+    <div class="container d-flex align-items-center justify-content-between" style="height:70px">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary w-100 bg-light-subtle" style="height:70px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-black" id="navbarSupportedContent">
+                <a class="navbar-brand fs-2" href="/">
+                    RC<small class="fs-6">ooks</small>
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/new_recipe/">Новые рецепты</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Категории рецептов
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for category in category_recipes %}
+                            <li><a class="dropdown-item" href="/category/{{ category.pk }}/">{{category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">О нас</a>
+                    </li>
+                </ul>
+
+
+                <li class="nav-item dropdown" style="list-style-type: none; margin-right: 1rem;">
+                    <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                            id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                            data-bs-display="static" aria-label="Toggle theme (auto)">
+                        <img rel="shortcut icon" src="{% static 'svg/theme/sun.svg' %}" width="25px"
+                             height="25px" class="theme-icon-active" href="#sun-fill">
+                        <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+                        <li class="pb-2">
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                    data-bs-theme-value="light" aria-pressed="false">
+                                <img rel="shortcut icon" src="{% static 'svg/theme/sun.svg' %}" width="25px"
+                                     height="25px" style="margin-right: 1rem;">
+                                Светлая
+                            </button>
+                        </li>
+                        <li class="pb-2">
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                    data-bs-theme-value="dark" aria-pressed="false">
+                                <img rel="shortcut icon" src="{% static 'svg/theme/night.svg' %}" width="25px"
+                                     height="25px" style="margin-right: 1rem;">
+                                Тёмная
+                            </button>
+                        </li>
+                        <li class="pb-2">
+                            <button type="button" class="dropdown-item d-flex align-items-center active"
+                                    data-bs-theme-value="auto" aria-pressed="true">
+                                <img rel="shortcut icon" src="{% static 'svg/theme/avto.svg' %}" width="25px"
+                                     height="25px" style="margin-right: 1rem;">
+                                Автоматически
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                {% if request.user.is_anonymous %}
+                <a class="btn btn-dark" href="/signin" role="button">Войти</a>
+                {% else %}
+                <a class="btn btn-link text-body-emphasis text-decoration-none" href="/recipe/add/" role="button"><img
+                        src="/static/svg/modal_login.svg"
+                        alt="icon" width="25vw" height="30vh"
+                        style="margin-right: 0.5rem;">
+                    {{ request.user }}
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<main class="content-wrapper" style="min-height: calc(100vh - 70px);">
+    <div class="container-fluid" style="padding:0px;">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</main>
+
+<footer style="height: 100%;" class="bg-dark pb-5 pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <a class="navbar-brand fs-2 text-white" href="/">
+                    RC<small class="fs-6">ooks</small>
+                </a>
+            </div>
+            <div class="col-9 d-flex flex-row-reverse">
+                <nav class="navbar bg-dark bg-body navbar-expand-lg text-white"
+                     data-bs-theme="dark">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/new_recipe/">Новые рецепты</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="/category_all/"
+                                   aria-expanded="false">
+                                    Категории рецептов
+                                </a>
+                                <ul class="lh-lg">
+                                    {% for category in category_recipes %}
+                                    <a class="dropdown-item" href="/category/{{ category.pk }}/">{{category.name }}</a>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">О компании</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+{% include '_scripts.html' %}
+</body>
+</html>

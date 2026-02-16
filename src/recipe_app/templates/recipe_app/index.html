@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-dark">
+    <div class="container pt-5 pb-5">
+        <div class="row align-items-center d-flex gap-5">
+            <div class="col">
+                <hr class="text-white">
+                <h1 class="text-center text-white">Самое сложное в приготовлении пищи - это решить, что же всё таки
+                    сегодня
+                    приготовить!</h1>
+                <hr class="text-white">
+            </div>
+            <div class="col">
+                <div class="card shadow-lg" style="background: url(../static/img/header_picture.jpg) center; background-size: cover;
+                height: 400px"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container pt-5">
+        <div class="w-100 d-flex justify-content-between align-items-end">
+            <h2>Новые рецепты</h2>
+            <a href="new_recipe/"
+               class="link-body-emphasis text-decoration-none">Показать остальные...</a>
+        </div>
+        {% include 'recipe_app/card_recipe_template.html' %}
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container pb-5 pt-5">
+        <div class="w-100 d-flex justify-content-between align-items-end">
+            <h2>Категории рецептов</h2>
+            <a href="category_all/"
+               class="link-body-emphasis text-decoration-none">Показать остальные...</a>
+        </div>
+        {% include 'recipe_app/card_category_template.html' %}
+    </div>
+</div>
+{% endblock %}

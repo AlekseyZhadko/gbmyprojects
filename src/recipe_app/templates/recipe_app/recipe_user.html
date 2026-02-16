@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <diV class="container pb-5 pt-5">
+        <div class="row">
+            <div class="col-2">
+                <nav class="nav nav-pills  flex-column">
+                    <a class="nav-link text-body" aria-current="page" href="/recipe/add/">Добавить рецепт</a>
+                    <a class="nav-link active bg-dark" href="/recipe/user/{{ request.user.pk }}">Мои рецепты</a>
+                    <a class="nav-link disabled">Настройки</a>
+                    <a class="nav-link text-danger" style="text-align: left" href="/logout/" role="button">Выход</a>
+                </nav>
+            </div>
+            <div class="col">
+                {% if recipe_user %}
+                <div class="card p-3">
+                    {% for recipe in recipe_user %}
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{recipe.picture.url}}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h4 class="card-title">{{ recipe.name }}</h4>
+                                        <h6 class="card-title">{{ recipe.category.name }}</h6>
+                                        <a href="/category/{{ recipe.category.pk }}/recipe/{{ recipe.pk }}/"
+                                           class="link-body-emphasis">
+                                            {{ recipe.description|safe|truncatechars_html:100 }}
+                                        </a>
+                                    </div>
+                                    <div class="w-100 d-flex justify-content-between">
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">
+                                                {{ recipe.create_date }}
+                                            </small>
+                                        </p>
+                                        <p class="card-text"><small class="text-body-secondary">{{ recipe.autor }}
+                                        </small></p>
+                                        <a class="btn btn-link text-body-secondary" href="/recipe/edit/{{ recipe.id }}"
+                                           role="button"><small>Редактировать</small></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="card p-3">
+                    <h3 class="text-center fst-italic p-5">У вас нет рецептов</h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </diV>
+</div>
+{% endblock %}

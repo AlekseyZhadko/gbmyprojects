@@ -1,0 +1,57 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-dark vh-100 align-items-center d-flex justify-content-center">
+    <div class="card p-5 pt-0" style="width: 500px;">
+        <div class="card-body">
+            <div class="p-5 text-center">
+                <a class="navbar-brand fs-1" href="/">
+                    RC<small class="fs-2">ooks</small>
+                </a>
+                <br>
+                <span class="fst-italic">Присоединяйся и создавай свою историю!</span>
+            </div>
+
+            <form method="post" action="" id="signin">
+                {% csrf_token %}
+                <div class="input-group flex-nowrap" style="padding-bottom: 1rem; width: 100%">
+                    <span class="input-group-text">
+                        <img src="/static/svg/modal_login.svg" alt="icon" width="25vw" height="30vh">
+                    </span>
+                    <div class="form-floating">
+                        {{ form.username }}
+
+                        <label style="font-size: 0.9rem">Логин</label>
+                    </div>
+                </div>
+                <div class="input-group flex-nowrap" style="padding-bottom: 1rem; width: 100%">
+                    <span class="input-group-text">
+                        <img src="/static/svg/password.svg" alt="icon" width="25vw" height="35vh">
+                    </span>
+                    <div class="form-floating" style="font-size: 0.9rem">
+                        {{ form.password }}
+                        <label>Пароль</label>
+                    </div>
+
+                </div>
+
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert" style="text-align: justify"><small
+                        class="text-body-secondary">
+                    {{form.non_field_errors}}</small></div>
+                {% endif %}
+
+                <div class="d-grid" style="padding: 0px 0px 15px 0px;">
+                    <button type="submit" name="button_form_login_view" value="button_form_login_view"
+                            class="btn btn-dark">
+                        Войти
+                    </button>
+                    <hr>
+                    <a class="btn btn-link text-body btn-sm" href="/signup" role="button">Зарегистрироваться</a>
+                    <a class="btn btn-link text-body btn-sm" href="/" role="button">На главную</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

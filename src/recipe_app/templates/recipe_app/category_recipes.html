@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container pb-5 pt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{category_name}}</li>
+            </ol>
+        </nav>
+        {% include 'recipe_app/card_recipe_template.html' %}
+        {% include 'recipe_app/pagination_recipe.html' %}
+    </div>
+</div>
+{% endblock %}

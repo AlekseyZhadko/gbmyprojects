@@ -1,0 +1,17 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 g-4 pb-3 pt-3">
+    {% for category in category_recipe %}
+    <div class="col">
+        <a href="/category/{{ category.pk }}/"
+           class="link-body-emphasis" style="text-decoration: none;">
+            <div class="card shadow h-100 border-0">
+                <img src="/media/{{ category.picture }}" class="card-img-top" alt="..."
+                     style="object-fit: cover; height: 45%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ category.name }}</h4>
+                    <p class="card-text">{{ category.description }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>

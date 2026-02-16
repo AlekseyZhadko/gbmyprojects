@@ -1,0 +1,17 @@
+.page-link {
+    z-index: 3;
+    color: var(--bs-emphasis-color);
+    border: 0 solid black;
+}
+
+.active > .page-link {
+    z-index: 3;
+    color: var(--bs-light);
+    background-color: var(--bs-dark);
+    border-radius: 0;
+}
+
+.btn-dark {
+    border: 1px solid var(--bs-secondary)
+}
+

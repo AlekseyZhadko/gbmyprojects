@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container pb-5 pt-5">
+        <div class="row">
+            <div class="col-5">
+                <div class="card shadow">
+                    <img src="/media/{{ recipe.picture }}" class="card-img-top" alt="..."
+                         style="object-fit: cover; height: 45%">
+                </div>
+            </div>
+            <div class="col-7">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item"><a href="/category/{{recipe.category.id}}">{{recipe.category.name}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{recipe.name}}</li>
+                    </ol>
+                </nav>
+                <h1 class="text-center">{{recipe.name}}</h1>
+                <hr>
+                <p style="text-align: justify;" class="lh-lg"><strong>Описание рецепта:</strong><br> {{recipe.description|safe}}
+                </p>
+                <p style="text-align: justify;" class="lh-lg"><strong>Шаги приготовления:</strong><br>
+                    {{recipe.cooking_steps}}</p>
+                <p style="text-align: justify;" class="lh-lg"><strong>Время приготовления:</strong>
+                    {{recipe.cooking_time}}</p>
+                <hr>
+                <div class="w-100 d-flex justify-content-between">
+                    <p class="card-text">
+                        <small class="text-body-secondary">
+                            {{ recipe.create_date }}
+                        </small>
+                    </p>
+                    <p class="card-text"><small class="text-body-secondary">{{ recipe.autor }} </small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

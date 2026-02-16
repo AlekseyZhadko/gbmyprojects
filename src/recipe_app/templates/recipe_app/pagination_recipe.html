@@ -1,0 +1,33 @@
+<div class="card shadow border-0 mt-3">
+    <div class="d-flex justify-content-center">
+        <ul class="pagination custom_pagination justify-content-center flex-wrap m-0">
+            {% if cards_subcategory.has_previous %}
+            <li class="page-item"><a class="page-link p-3 fs-5"
+                                     href="?page=1"> &laquo;</a>
+            </li>
+            <li class="page-item"><a class="page-link p-3 fs-5"
+                                     href="?page={{ new_recipes.previous_page_number }}"> &lsaquo;</a>
+            </li>
+            {% endif %}
+            {% for i in page_range|default_if_none:new_recipes.paginator.get_elided_page_range %}
+            {% if new_recipes.number == i %}
+            <li class="active page-item"><span class="active_page_item fs-5 p-3 page-link">{{ i }} <span
+                    class="sr-only"></span></span>
+            </li>
+            {% else %}
+            {% if i == cards_subcategory.paginator.ELLIPSIS %}
+            <li class="page-item"><span class="p-3 page-link fs-5">{{ i }}</span></li>
+            {% else %}
+            <li class="page-item"><a class="p-3 page-link fs-5" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% if cards_subcategory.has_next %}
+            <li class="page-item"><a class="p-3 page-link fs-5"
+                                     href="?page={{ new_recipes.next_page_number }}">&rsaquo;</a></li>
+            <li class="page-item"><a class="p-3 page-link fs-5"
+                                     href="?page={{ new_recipes.paginator.num_pages }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

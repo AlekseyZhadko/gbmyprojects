@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <diV class="container pb-5 pt-5">
+        <div class="row">
+            <div class="col-2">
+                <nav class="nav nav-pills  flex-column">
+                    <a class="nav-link text-body" aria-current="page" href="/recipe/add/">Добавить рецепт</a>
+                    <a class="nav-link text-body" href="/recipe/user/{{ request.user.pk }}">Мои рецепты</a>
+                    <a class="nav-link disabled">Настройки</a>
+                    <a class="nav-link text-danger" style="text-align: left" href="/logout/" role="button">Выход</a>
+                </nav>
+            </div>
+            <div class="col">
+                <div class="card p-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ recipe.picture.url }}" class="img-fluid rounded-start pb-3" alt="...">
+                            <div class="w-100 d-flex justify-content-between">
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        {{ recipe.create_date }}
+                                    </small>
+                                </p>
+                                <p class="card-text"><small class="text-body-secondary">{{ recipe.autor }}
+                                </small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body h-100 d-flex flex-column justify-content-between">
+                                <form action="" method="post" class="d-flex flex-column gap-3 needs-validation"
+                                      novalidate enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                    <div class="input-group">
+                                        <label class="input-group-text w-25 text-wrap" style="text-align: left">
+                                            {{ form.category.label_tag }}</label>
+                                        {{ form.category }}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text w-25 text-wrap" style="text-align: left">{{ form.name.label_tag }}</span>
+                                        {{ form.name }}
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text w-25 text-wrap" style="text-align: left"> {{ form.description.label_tag }}</span>
+                                        <div class="w-75 h-100 p-0 m-0">
+                                            {{ form.description }}
+                                        </div>
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text w-25 text-wrap" style="text-align: left"> {{ form.cooking_steps.label_tag }}</span>
+                                        {{ form.cooking_steps }}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text w-25 text-wrap" style="text-align: left"> {{ form.cooking_time.label_tag }}</span>
+                                        {{ form.cooking_time }}
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-group-text w-25 text-wrap"
+                                               style="text-align: left">Загрузка</label>
+                                        {{ form.picture }}
+                                    </div>
+                                    {{ form.errors }}
+                                    <div class="d-flex flex-row-reverse">
+                                        <button type="submit" class="btn btn-dark w-25">Сохранить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </diV>
+</div>
+
+{% endblock %}

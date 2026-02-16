@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <diV class="container pb-5 pt-5">
+        <div class="row">
+            <div class="col-2">
+                <nav class="nav nav-pills  flex-column">
+                    <a class="nav-link active bg-dark" aria-current="page" href="/recipe/add/">Добавить рецепт</a>
+                    <a class="nav-link text-body" href="/recipe/user/{{ request.user.pk }}">Мои рецепты</a>
+                    <a class="nav-link disabled">Настройки</a>
+                    <a class="nav-link text-danger" style="text-align: left" href="/logout/"  role="button">Выход</a>
+                </nav>
+            </div>
+            <div class="col">
+                <div class="card p-3">
+                    <form action="" method="post" class="d-flex flex-column gap-3 needs-validation" novalidate enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        <div class="input-group">
+                            <label class="input-group-text w-25"> {{ form.category.label_tag }}</label>
+                            {{ form.category }}
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text w-25">{{ form.name.label_tag }}</span>
+                            {{ form.name }}
+                        </div>
+                        <div class="input-group ">
+                            <span class="input-group-text w-25"> {{ form.description.label_tag }}</span>
+                            <div class="w-75 h-100 p-0 m-0">
+                            {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="input-group ">
+                            <span class="input-group-text w-25"> {{ form.cooking_steps.label_tag }}</span>
+                            {{ form.cooking_steps }}
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text w-25"> {{ form.cooking_time.label_tag }}</span>
+                            {{ form.cooking_time }}
+                        </div>
+                        <div class="input-group">
+                            <label class="input-group-text w-25">Загрузка</label>
+                            {{ form.picture }}
+                        </div>
+                        {{ form.errors }}
+                        <div class="d-flex flex-row-reverse">
+                            <button type="submit" class="btn btn-dark w-25">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </diV>
+</div>
+{% endblock %}
