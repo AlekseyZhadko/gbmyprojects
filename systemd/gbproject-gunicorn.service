@@ -1,0 +1,13 @@
+[Unit]
+Description=gbproject-gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/www/code/gbproject/src
+ExecStart=/home/www/code/gbproject/venv/bin/gunicorn --workers 3 --bind unix:/home/www/code/gbproject/gunicorn/gbproject-gunicorn.sock recipe.wsgi:application --access-logfile /home/www/code/gbproject/gunicorn/gbproject-access.log --error-logfile /home/www/code/gbproject/gunicorn/gbproject-error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
