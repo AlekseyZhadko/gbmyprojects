@@ -9,7 +9,7 @@
                     <a class="nav-link active bg-dark" aria-current="page" href="/recipe/add/">Добавить рецепт</a>
                     <a class="nav-link text-body" href="/recipe/user/{{ request.user.pk }}">Мои рецепты</a>
                     <a class="nav-link disabled">Настройки</a>
-                    <form id="logout-form" method="post" action="/admin/logout/">
+                    <form id="logout-form" method="post" action="/logout/">
                     {% csrf_token %}
                     <input type="hidden">
                     <button class="nav-link text-danger" type="submit">Выход</button>

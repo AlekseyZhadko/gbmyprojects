@@ -4940,3 +4940,27 @@ SyntaxError: invalid syntax. Perhaps you forgot a comma?
 [2026-02-17 02:56:53 +0000] [18386] [INFO] Booting worker with pid: 18386
 [2026-02-17 02:56:53 +0000] [18387] [INFO] Booting worker with pid: 18387
 [2026-02-17 02:56:53 +0000] [18388] [INFO] Booting worker with pid: 18388
+[2026-02-17 04:21:41 +0000] [18384] [INFO] Handling signal: term
+[2026-02-17 04:21:41 +0000] [18386] [INFO] Worker exiting (pid: 18386)
+[2026-02-17 04:21:41 +0000] [18388] [INFO] Worker exiting (pid: 18388)
+[2026-02-17 04:21:41 +0000] [18387] [INFO] Worker exiting (pid: 18387)
+[2026-02-17 04:21:42 +0000] [18384] [INFO] Shutting down: Master
+[2026-02-17 04:21:42 +0000] [19934] [INFO] Starting gunicorn 25.1.0
+[2026-02-17 04:21:42 +0000] [19934] [INFO] Listening at: unix:/home/www/code/gbproject/gunicorn/gbproject-gunicorn.sock (19934)
+[2026-02-17 04:21:42 +0000] [19934] [INFO] Using worker: sync
+[2026-02-17 04:21:42 +0000] [19934] [INFO] Control socket listening at /home/www/code/gbproject/src/gunicorn.ctl
+[2026-02-17 04:21:42 +0000] [19939] [INFO] Booting worker with pid: 19939
+[2026-02-17 04:21:42 +0000] [19940] [INFO] Booting worker with pid: 19940
+[2026-02-17 04:21:42 +0000] [19941] [INFO] Booting worker with pid: 19941
+[2026-02-17 05:07:07 +0000] [19934] [INFO] Handling signal: term
+[2026-02-17 05:07:07 +0000] [19940] [INFO] Worker exiting (pid: 19940)
+[2026-02-17 05:07:07 +0000] [19941] [INFO] Worker exiting (pid: 19941)
+[2026-02-17 05:07:07 +0000] [19939] [INFO] Worker exiting (pid: 19939)
+[2026-02-17 05:07:07 +0000] [19934] [INFO] Worker (pid:19940) was sent SIGTERM!
+[2026-02-17 05:07:07 +0000] [19934] [INFO] Shutting down: Master
+[2026-02-17 05:07:07 +0000] [20698] [INFO] Starting gunicorn 25.1.0
+[2026-02-17 05:07:07 +0000] [20698] [INFO] Listening at: unix:/home/www/code/gbproject/gunicorn/gbproject-gunicorn.sock (20698)
+[2026-02-17 05:07:07 +0000] [20698] [INFO] Using worker: sync
+[2026-02-17 05:07:07 +0000] [20698] [INFO] Control socket listening at /home/www/code/gbproject/src/gunicorn.ctl
+[2026-02-17 05:07:07 +0000] [20702] [INFO] Booting worker with pid: 20702
+[2026-02-17 05:07:07 +0000] [20703] [INFO] Booting worker with pid: 20703
